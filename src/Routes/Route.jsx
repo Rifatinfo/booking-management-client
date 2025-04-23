@@ -7,6 +7,7 @@ import LoginForm from "../Pages/signIn/LoginForm";
 import AvailableRoom from "../Pages/AvailableRoom/AvailableRoom";
 import DashBoard from "../Pages/DashBoard/DashBoard";
 import Cart from "../Pages/Cart/Cart";
+import AllUser from "../Pages/AllUser/AllUser";
 
   const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ import Cart from "../Pages/Cart/Cart";
         {
           path: "cart",
           element: <Cart/>,
+        },
+        {
+          path: "all-user",
+          element: <AllUser/>,
         }
       ]
     }
