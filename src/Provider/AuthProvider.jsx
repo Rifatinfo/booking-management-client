@@ -10,9 +10,11 @@ import {
   updateProfile,
 } from 'firebase/auth'
 import app from '../firebase/firebase.config'
+import UseAxiosPublic from '../hooks/UseAxiosPublic'
 
 export const AuthContext = createContext(null)
 const auth = getAuth(app)
+const axiosPublic = UseAxiosPublic();
 const googleProvider = new GoogleAuthProvider()
 
 const AuthProvider = ({ children }) => {
@@ -49,14 +51,33 @@ const AuthProvider = ({ children }) => {
   // onAuthStateChange
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      setUser(currentUser)
-      console.log('CurrentUser-->', currentUser)
-      setLoading(false)
-    })
-    return () => {
-      return unsubscribe()
-    }
-  }, [])
+      console.log('CurrentUser-->', currentUser);
+  
+      if (currentUser) {
+        const userInfo = {
+          email: currentUser?.email
+        };
+        axiosPublic.post('/jwt', userInfo)
+          .then(res => {
+            console.log('JWT response:', res.data);
+            if (res.data.token) {
+              localStorage.setItem('access-token', res.data.token);
+            }
+          })
+          .catch(error => {
+            console.error('JWT fetch error:', error);
+          });
+      } else {
+        localStorage.removeItem('access-token');
+      }
+  
+      setUser(currentUser);
+      setLoading(false);
+    });
+  
+    return () => unsubscribe();
+  }, []);
+  
 
   const authInfo = {
     user,

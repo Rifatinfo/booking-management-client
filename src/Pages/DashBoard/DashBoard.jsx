@@ -4,9 +4,11 @@ import { IoHome } from "react-icons/io5";
 import { IoMdMenu } from "react-icons/io";
 import { FaBagShopping } from "react-icons/fa6";
 import { MdContactPhone } from "react-icons/md";
+import UseAdmin from "../../hooks/UseAdmin";
 
 const DashBoard = () => {
-    const isAdmin = true;
+    const [isAdmin] =  UseAdmin();
+    // const isAdmin = true
     return (
         <div className="flex flex-col md:flex-row gap-2 max-w-7xl mx-auto md:p-0 p-2">
             {/* routing content */}

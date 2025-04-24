@@ -11,6 +11,21 @@ const AllUser = () => {
             return res.data;
         }
     })
+    const makeAdmin = (user) => {
+        axiosSecure.patch(`/user/admin/${user._id}`)
+        .then(res => {
+            if(res.data.modifiedCount > 0){
+                refetch();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${user.name} is Admin`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+        })
+    }
     const handleDeleteUser = (_id) => {
       Swal.fire({
                   title: "Are you sure?",
@@ -102,7 +117,7 @@ const AllUser = () => {
                                     {item.email}
                                 </td>
                                 <th>
-                                    <p>icon</p>
+                                   {item.role === 'admin' ? "Admin" :  <p onClick={() => makeAdmin(item)}>icon</p>}
                                 </th>
                                 <th>
                                     <p onClick={() => handleDeleteUser(item._id)}>icon</p>
