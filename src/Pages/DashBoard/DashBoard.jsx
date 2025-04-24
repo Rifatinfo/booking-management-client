@@ -38,7 +38,7 @@ const DashBoard = () => {
                                 <p>All User</p>
                             </div>
                         </NavLink></li>
-                        <li className="mb-2"><NavLink to="/dashboard/cart">
+                        <li className="mb-2"><NavLink to="/dashboard/add-item">
                             <div className="flex gap-2 text-xl  items-start ml-[58px] md:ml-0 justify-start text-white font-semibold">
                                 <p><IoHome /></p>
                                 <p>Add Item</p>
@@ -68,7 +68,7 @@ const DashBoard = () => {
                                 <p>Reservation</p>
                             </div>
                         </NavLink></li>
-                        <li className="mb-2"><NavLink to="/dashboard/cart">
+                        <li className="mb-2"><NavLink to="/dashboard/add-item">
                             <div className="flex gap-2 text-xl  items-start ml-[58px] md:ml-0 justify-start text-white font-semibold">
                                 <p><IoHome /></p>
                                 <p>Add Item</p>

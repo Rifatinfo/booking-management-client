@@ -8,6 +8,7 @@ import AvailableRoom from "../Pages/AvailableRoom/AvailableRoom";
 import DashBoard from "../Pages/DashBoard/DashBoard";
 import Cart from "../Pages/Cart/Cart";
 import AllUser from "../Pages/AllUser/AllUser";
+import AddNewItem from "../Pages/AddNewItem/AddNewItem";
 
   const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ import AllUser from "../Pages/AllUser/AllUser";
         {
           path: "all-user",
           element: <AllUser/>,
+        },
+        {
+          path : "add-item",
+          element : <AddNewItem/>
         }
       ]
     }

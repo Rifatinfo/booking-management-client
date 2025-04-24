@@ -53,7 +53,8 @@ export default function LoginForm() {
         const userInfo  = {
           email : result.user.email,
           name : result.user.displayName,
-          photo : result.user.photoURL
+          photo : result.user.photoURL,
+          role : 'admin'
         }
         usePublic.post('/user', userInfo)
       .then(res => {
